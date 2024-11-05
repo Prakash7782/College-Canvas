@@ -1,89 +1,43 @@
 import './styles.scss';
-import {Canvas, Circle, Rect} from "fabric";
+import {Canvas, Circle, Rect, Textbox, Triangle, util} from "fabric";
 import React, {useRef, useState, useEffect} from 'react';
-import {Button, IconButton} from "blocksin-system";
-import {SquareIcon, CircleIcon} from "sebikostudio-icons";
+import {IconButton} from "blocksin-system";
+import {SquareIcon, CircleIcon, ResetIcon, TriangleIcon, TextIcon, DownloadIcon, PenIcon, ImageIcon} from "sebikostudio-icons";
 import Settings from './settings';
 import Video from './video';
 import CanvasSettings from './CanvasSettings';
-import {handleObjectMoving, clearGuidelines} from "./snappingHelpers";
-
-function CanvasApp() {
-
-  const canvasRef = useRef(null);
-  const [canvas, setCanvas] = useState(null);
-  const [guidelines, setGuidelines] = useState([]);
-
-  useEffect(() => {
-    if(canvasRef.current) {
-      const initCanvas = new Canvas(canvasRef.current, {
-        width : 350,
-        height : 350,
-      });
-
-      initCanvas.backgroundColor = "#fff";
-      initCanvas.renderAll();
-
-      setCanvas(initCanvas);
-
-      initCanvas.on("object:moving", (event) => 
-        handleObjectMoving(initCanvas, event.target, guidelines, setGuidelines)
-      );
-
-      initCanvas.on("object:modified", (event) => 
-        handleObjectMoving(initCanvas, guidelines, setGuidelines)
-      );
+import {handleObjectMoving} from "./snappingHelpers";
+import {ImageDownIcon, Route, Trash2} from "lucide-react"
+import Export from "./Export";
+import Drawing from './Drawing';
+import {BrowserRoute, Router, Routes} from "react-router-dom";
+import ImageUpload from './Image';
 
 
-      return () => {
-        initCanvas.dispose();
-      };
-    }
-  }, []);
+function App() {
+<Routes>
 
-const addRectangle= () => {
-  if(canvas){
-    const rect = new Rect({
-      top : 220,
-      left : 200,
-      width : 100,
-      height : 60,
-      fill : "black",
-    });
+<Route to="/canvas" element={<Canvas/>}>
+ 
+</Route>
 
-    canvas.add(rect);
-  } 
-}
+</Routes>
+  
+   return (
+    <div>
 
-const addCircle= () => {
-  if(canvas){
-    const circle = new Circle({
-      top : 220,
-      left : 220,
-      radius : 30,
-      fill : "blue",
-    });
-
-    canvas.add(circle);
-  } 
-}
-  return (
-    <div className="App">
-      <div className='Toolbar darkmode'>
-       <IconButton onClick={addRectangle} variant="ghost" size="medium">
-        <SquareIcon/>
-       </IconButton>
-       <IconButton onClick={addCircle} variant="ghost" size="medium">
-        <CircleIcon/>
-       </IconButton>
-       <Video canvas={canvas} canvasRef={canvasRef}/>
-
-      </div>
-      <canvas id='canvas' ref={canvasRef} />
-      <Settings canvas={canvas}/>
-      <CanvasSettings canvas={canvas}/>
-      
     </div>
-  );
+   )
+   
 }
-export default CanvasApp;
+<Routes>
+
+  <Route to="/canvas" element={<Canvas/>}>
+  
+
+  </Route>
+
+</Routes>
+
+
+export default App;

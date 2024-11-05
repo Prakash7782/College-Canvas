@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react'
 const CanvasSettings = ({canvas}) => {
     const [canvasHeight, setCanvasHeight] = useState(350);
     const [canvasWidth, setCanvasWidth] = useState(350);
+    const [canvasColor, setCanvasColor] = useState("white");
 
     useEffect(() => {
-        if(canvas){
-            canvas.setWidth(canvasWidth);
-            canvas.setHeight(canvasHeight);
-            canvas.renderAll();
-        }
+            if(canvas){
+                canvas.setWidth(canvasWidth);
+                canvas.setHeight(canvasHeight);
+                canvas.renderAll();
+            }
     }, [canvasHeight, canvasWidth, canvas]);
 
     const handleWidthChange = (e) => {
@@ -28,6 +29,16 @@ const CanvasSettings = ({canvas}) => {
             setCanvasHeight(intValue);
         }
     }
+    const handleColorChange = (e) => {
+
+        const value = e.target.value;
+ 
+        setCanvasColor(value);
+ 
+        canvas.backgroundColor = value;
+         canvas.renderAll();
+ 
+     };
 
   return (
     <div className='CanvasSettings darkmode'>
@@ -43,6 +54,14 @@ const CanvasSettings = ({canvas}) => {
         label="Canvas Height"
         value={canvasHeight}
         onChange={handleHeightChange}
+        />
+
+        <Input
+        fluid
+        label="Canvas Color"
+        type="color"
+        value={canvasColor}
+        onChange={handleColorChange}
         />
       
     </div>
