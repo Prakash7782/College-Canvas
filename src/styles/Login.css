@@ -1,0 +1,88 @@
+
+
+.login-body {
+    height: 100vh;
+    width: 100vw; 
+    margin: 0;
+    padding: 0;
+    background-image: url('../../public/Blue\ Purple\ Modern\ Animated\ Computer\ Science\ Presentation\ \(1\).gif'); /* Adjust the image path if needed */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    background-color: #FFF;
+    padding: 32px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    height:450px;
+    box-shadow: 40px 40px 20px rgba(66, 68, 90, 0.3);
+    text-align: center;
+    min-height: 400px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login-container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(105, 92, 226);
+}
+.login-container input {
+    
+    background-color: #e6f2ff;
+}
+
+.login-container label {
+    flex: 1; 
+    text-align: left;
+}
+
+.login-container input {
+    flex: 2; 
+    font-size: 16px; 
+    padding: 8px; 
+    border: none;
+    color:rgb(12, 12, 12);
+    outline: none;
+    border-bottom: 2px solid rgb(6, 6, 226);
+}
+
+.login-container input::placeholder {
+    font-size: 12px; /* Adjusted font size */
+    font-style: italic;
+    color: rgb(161, 161, 244);
+}
+
+.login-button {
+    background-color: rgb(103, 108, 246);
+    border: none;
+    font-size: 18px; 
+    color: rgb(245, 244, 244);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.login-container h1 {
+    font-size: 26px; 
+    margin-bottom: 20px;
+    color: blue;
+}
+.signup-nav{
+    color:rgb(0, 47, 255)
+}
+.signup-btn{
+    cursor:pointer;
+}
