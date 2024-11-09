@@ -4,7 +4,6 @@ import { ImageIcon } from 'lucide-react';
 import { FabricImage } from 'fabric';
 
 const ImageHandler = ({ canvas }) => {
-    const [uploadMessage, setUploadMessage] = useState("");
     const fileInputRef = useRef(null);
 
     const handleImageUpload = (event) => {
@@ -47,10 +46,6 @@ const ImageHandler = ({ canvas }) => {
                  
                     canvas.renderAll();
                      
-                    setUploadMessage("Image uploaded");
-                    setTimeout(() => {
-                        setUploadMessage("");
-                    }, 3000);
                 };
             };
             
@@ -75,17 +70,10 @@ const ImageHandler = ({ canvas }) => {
             <IconButton
                 onClick={handleImageUploadButtonClick}
                 variant="ghost"
-                size="sm"
-                className="flex items-center justify-center"
+                size="medium"
             >
-                <ImageIcon className="w-5 h-5" />
+                <ImageIcon />
             </IconButton>
-            
-            {uploadMessage && (
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-green-500 text-white rounded-md text-sm">
-                    {uploadMessage}
-                </div>
-            )}
         </div>
     );
 };
