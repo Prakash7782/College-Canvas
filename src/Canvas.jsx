@@ -221,9 +221,7 @@ const hideContextMenu = () => {
        <IconButton onClick={addTriangle} variant="ghost" size="medium">
         <TriangleIcon/>
        </IconButton>
-       <IconButton onClick={addTextToCanvas} variant="ghost" size="medium">
-        <TextIcon/>
-       </IconButton>
+        <TextStyleMenu canvas={canvas} />
        <IconButton variant="ghost" size="medium">
         <PenIcon/>
        </IconButton>
