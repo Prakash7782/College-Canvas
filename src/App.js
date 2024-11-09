@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import ImageUpload from './Image';
+import ImageUpload from './ImageHandler.js';
 import {Canvas, Circle, Rect, Textbox, Triangle, util} from "fabric";
 import React, {useRef, useState, useEffect} from 'react';
 import {IconButton} from "blocksin-system";

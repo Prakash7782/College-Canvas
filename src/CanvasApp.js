@@ -11,7 +11,7 @@ import {handleObjectMoving} from "./snappingHelpers";
 import {ImageDownIcon, Route, Trash2} from "lucide-react"
 import Export from "./Export";
 // import Drawing from './Drawing';
- import ImageUpload from './Image';
+ import ImageHandler from './ImageHandler';
 
 
 function CanvasApp() {
