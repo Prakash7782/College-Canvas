@@ -1,0 +1,75 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.carousel-container {
+  position: relative;
+}
+
+.carousel-caption-static {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(191, 244, 150); 
+  /* background-color: rgba(0, 0, 0, 0.5);  */
+  padding: 20px; 
+  border-radius: 10px; 
+  z-index: 10; 
+  text-align: center; 
+}
+
+
+.carousel-head {
+  color: aquamarine; 
+  text-shadow: 2px 2px 5px rgba(97, 218, 251, 0.7);
+  font-size:larger; 
+}
+.carousel-text{
+  font-family:cursive
+}
+.carousel-item img {
+  max-width: 100%;
+  height: 40rem;     
+  object-fit:fill; 
+}
+.form-inline-cap .form-control{
+  background-color:rgb(161, 238, 238);
+}
+.form-inline-cap {
+  gap: 0.5rem;
+}

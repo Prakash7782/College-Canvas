@@ -1,0 +1,48 @@
+
+.navbar-nav .nav-link {
+    color: #2ee0a2;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.1rem 0.1rem;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    border: 2px solid #59dafa;
+    cursor:pointer;
+    letter-spacing: 1px;
+}
+.navbar-nav .btn-link {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    background: none;
+    cursor: pointer; /* Make it act like a link */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgb(25, 116, 227); /* White background on hover */
+    /* color: #28a745;  */
+    /* transform: translateY(-3px); */
+    /* box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.navbar-nav .nav-item .btn-link {
+    /* color: #59dafa; */
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding:  0.1rem 0.1rem;
+    border: 2px solid #59dafa; /* Border around the Logout button */
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item .btn-link:hover {
+    background-color: rgb(25, 116, 227); /* White background on hover */
+    color: #28a745; 
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

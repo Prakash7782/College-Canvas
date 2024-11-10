@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
-import { GoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin } from '@react-oauth/google';
+import Navbar from '../component/Navbar.js'
 
 function Signup() {
     const [signupInfo, setSignupInfo] = useState({
@@ -26,6 +27,10 @@ function Signup() {
         if (!name || !email || !password || !confirmPassword) {
             return handleError('All fields are required');
         }
+        if (password.length < 4) {
+            return handleError('Password should not be less than 4 characters');
+        }
+    
 
         if (password !== confirmPassword) {
             return handleError('Passwords do not match');
@@ -52,97 +57,106 @@ function Signup() {
         }
     };
 
-    const handleGoogleSignupSuccess = async (credentialResponse) => {
-        const token = credentialResponse.credential;
-        if (token) {
-            try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/google-signup`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ token }),
-                });
-                const result = await response.json();
-                if (result.success) {
-                    handleSuccess('Google Signup Successful');
-                    localStorage.setItem('token', result.jwtToken);
-                    localStorage.setItem('loggedInUser', result.name);
-                    setTimeout(() => navigate('/home'), 1000);
-                } else {
-                    handleError('Failed to signup with Google');
-                }
-            } catch (error) {
-                handleError('Error verifying Google signup token');
-            }
-        } else {
-            handleError('Failed to retrieve Google signup token');
-        }
-    };
+    // const handleGoogleSignupSuccess = async (credentialResponse) => {
+    //     const token = credentialResponse.credential;
+    //     if (token) {
+    //         try {
+    //             const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/google-signup`, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                 },
+    //                 body: JSON.stringify({ token }),
+    //             });
+    //             const result = await response.json();
+    //             if (result.success) {
+    //                 handleSuccess('Google Signup Successful');
+    //                 localStorage.setItem('token', result.jwtToken);
+    //                 localStorage.setItem('loggedInUser', result.name);
+    //                 setTimeout(() => navigate('/home'), 1000);
+    //             } else {
+    //                 handleError('Failed to signup with Google');
+    //             }
+    //         } catch (error) {
+    //             handleError('Error verifying Google signup token');
+    //         }
+    //     } else {
+    //         handleError('Failed to retrieve Google signup token');
+    //     }
+    // };
 
-    const handleGoogleSignupFailure = () => {
-        handleError('Google Signup Failed');
-    };
+    // const handleGoogleSignupFailure = () => {
+    //     handleError('Google Signup Failed');
+    // };
 
     return (
-        <div className='container'>
-            <h1>Signup</h1>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                        onChange={handleChange}
-                        type='text'
-                        name='name'
-                        placeholder='Enter your name...'
-                        value={signupInfo.name}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                        onChange={handleChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter your email...'
-                        value={signupInfo.email}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter your password...'
-                        value={signupInfo.password}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='confirmPassword'>Confirm Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='confirmPassword'
-                        placeholder='Confirm your password...'
-                        value={signupInfo.confirmPassword}
-                    />
-                </div>
-                <button type='submit'>Signup</button>
-                <span>Already have an account? 
-                    <Link to="/login">Login</Link>
-                </span>
-            </form>
+        <>
+            <Navbar />
+            <div className='login-body'>
+                <div className='login-container'>
+                    <h1><b>Signup</b></h1>
+                    <form className='login-form' onSubmit={handleSignup}>
+                        <div>
+                            <label htmlFor='name'>Name</label>
+                            <input
+                                onChange={handleChange}
+                                type='text'
+                                name='name'
+                                placeholder='Enter your name...'
+                                value={signupInfo.name}
+                                style={{ textAlign: 'left' }} 
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor='email'>Email</label>
+                            <input
+                                onChange={handleChange}
+                                type='email'
+                                name='email'
+                                placeholder='Enter your email...'
+                                value={signupInfo.email}
+                                style={{ textAlign: 'left' }} 
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor='password'>Password</label>
+                            <input
+                                onChange={handleChange}
+                                type='password'
+                                name='password'
+                                placeholder='Enter your password...'
+                                value={signupInfo.password}
+                                style={{ textAlign: 'left' }} 
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor='confirmPassword'>Confirm Password</label>
+                            <input
+                                onChange={handleChange}
+                                type='password'
+                                name='confirmPassword'
+                                placeholder='Confirm your password...'
+                                value={signupInfo.confirmPassword}
+                                style={{ textAlign: 'left' }} 
+                            />
+                        </div>
+                        <button className='login-button' type='submit'>Signup</button>
+                        <span className='signup-nav'>Already have an account?
+                            <Link to="/login"><i className='signup-btn'>Login</i> </Link>
+                        </span>
+                    </form>
 
-            <div>
+                    {/* <div>
                 <GoogleLogin
                     onSuccess={handleGoogleSignupSuccess}
                     onError={handleGoogleSignupFailure}
                 />
-            </div>
+            </div> */}
 
-            <ToastContainer />
-        </div>
+                    <ToastContainer />
+                </div>
+            </div>
+        </>
     );
 }
 

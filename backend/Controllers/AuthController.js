@@ -5,7 +5,6 @@ const { OAuth2Client } = require('google-auth-library');
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // Google client
 
-// Signup for traditional user
 const signup = async (req, res) => {
     try {
         const { name, email, password, userType } = req.body;

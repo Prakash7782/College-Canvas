@@ -9,5 +9,8 @@ router.post('/signup', signupValidation, signup);
 
 // Google OAuth login
 router.post('/google-login', googleLogin);
+const { saveCanvas } = require('../Controllers/CanvasController');
+router.post('/save-canvas', saveCanvas);
+
 
 module.exports = router;
